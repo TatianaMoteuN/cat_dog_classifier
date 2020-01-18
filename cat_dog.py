@@ -125,11 +125,21 @@ model_fnn = CNN(input_size, n_hidden, output_size)
 optimizer = optim.SGD(model_fnn.parameters(), lr=0.01, momentum=0.5)
 print('Number of parameters: {}'.format(get_n_params(model_fnn)))
 
+n_hidden = 4 # number of hidden units
+input_size  = 100*100  # images are 28x28 pixels
+output_size = 2  
+
+model_fnn1 = CNN2(input_size, n_hidden, output_size)
+optimizer = optim.SGD(model_fnn1.parameters(), lr=0.01, momentum=0.5)
+print('Number of parameters: {}'.format(get_n_params(model_fnn1)))
+
 for epoch in range(0, 1):
     train(epoch, model_fnn,train_loader,optimizer)
     test(model_fnn,test_loader)
 
-
+for epoch in range(0,1):
+    train(epoch, model_fnn1, train_loader, optimizer)
+    test(model_fnn1, test_loader)
 # In[ ]:
 
 
